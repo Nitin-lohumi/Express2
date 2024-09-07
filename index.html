@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getGreeting()">Click Me!</button>
+    <div style="margin-top: 15px" id="greeting"></div>
+</body>
+<script>
+    const greet = document.getElementById('greeting');
+   async function getGreeting(){
+        const res = await fetch('http://localhost:3000/');
+        const data = await res.json();
+        greet.innerHTML = "your name is comming from server   =>  "+ data.greeting;
+    }
+</script>
+</html>
