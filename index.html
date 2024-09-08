@@ -6,15 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="getGreeting()">Click Me!</button>
-    <div style="margin-top: 15px" id="greeting"></div>
+    <form action="http://localhost:3000/home" method="POST" onsubmit="submit()">
+        <input type="text" name ="name"placeholder="value enter ">
+        <input type="submit"  name="submit" id="submit">
+    </form>
 </body>
 <script>
     const greet = document.getElementById('greeting');
-   async function getGreeting(){
-        const res = await fetch('http://localhost:3000/');
+    async function submit(){
+        const res = await fetch('http://localhost:3000/home');
         const data = await res.json();
-        greet.innerHTML = "your name is comming from server   =>  "+ data.greeting;
+        greet.innerHTML = "your name is comming from server   =>  "+ data.name
     }
 </script>
 </html>

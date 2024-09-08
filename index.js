@@ -1,12 +1,11 @@
-import { createServer } from 'node:http';
+import express from 'express'
+import bodyParser from 'body-parser';
 import chalk from 'chalk';
-const server  =  createServer((req,res)=>{
-  res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Access-control-Allow-Origin','*');
-  res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  res.end(JSON.stringify({greeting:"hello nitin" ,name:"nickkks"}));
+const app = express();
+app.use(bodyParser.urlencoded())
+app.post('/home',(req,res)=>{
+  res.send("your  name is " + req.body.name);
 })
-server.listen(3000,()=>{
+app.listen(3000,()=>{
   console.log(chalk.white.bgGreen.bold("server is running in port number")+ chalk.green(" 3000"))
 });
