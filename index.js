@@ -8,11 +8,11 @@ const directoryPath = url.fileURLToPath(directoryUrl);
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
-app.set('views', path.join(directoryPath,'views'));
 app.set("view engine","ejs");
+app.set('views', path.join(directoryPath,'views'));
 app.use(express.static(path.join(directoryPath,'public')));//use for front End
 app.get('/',(req,res)=>{
-  res.render("index");  
+  res.render("./index.ejs");  
 })
 app.get('/:name',(req,res)=>{
   res.send("name is "+ req.params.name)
